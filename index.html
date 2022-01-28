@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Arjuna's Gandiv</title>
+  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <style>
+  body{
+    background-color: #01FF97;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width:100%;
+    
+  }
+  div{
+    height:90px;
+    width:90px;
+    display:flex;
+    justify-content: center;
+    background-color:#FFEFEF;
+    border-radius: 50%;
+  }
+  div span{
+    height: 70px;
+    width: 70px;
+    background-color: #E90000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+  }
+  .move{
+    animation: moving 2s linear 1 alternate;
+  }
+  @keyframes moving{
+    25%{
+     box-sizing: border-box;
+     width: 600px;
+      
+    }
+    50%{
+      transform: rotateZ(-380deg);
+      opacity: 90%;
+      width: 120px;
+  
+    }
+    70{
+      transform: rotateZ(360deg);
+      opacity: 80%;
+      width: 240px;
+    }
+    90%{
+      transform: rotateZ(-2700deg);
+      opacity: 70%;
+      width: 480px;
+    }
+    100%{
+      content: "Destroyed";
+      display: none;
+      background-color: #000000;
+      width: 960px;
+      transform: rotateZ(360deg);
+    }
+  }
+  </style>
+</head>
+
+<body>
+  <div class="tar">
+    <span><h2>Target</h2></span>
+  </div>
+  <!-- Project -->
+  <script>
+  document.body.oncopy = function() { return false; }
+  document.body.oncut = function() { return false; }
+  document.body.onpaste = function() { return false;}
+const tar =   document.querySelector(".tar");
+  
+  const mouseXEnd = window.innerWidth;
+  const mouseYEnd = window.innerHeight;
+
+var x1, y1, mx, my;
+  window.addEventListener("touchstart", function (e){
+    
+      x1 = e.touches[0].clientX;
+      y1 = e.touches[0].clientY;
+    }) 
+    window.addEventListener("touchmove", function(e) {
+      mx = e.touches[0].clientX;
+      my = e.touches[0].clientY;
+    })
+    window.addEventListener("touchend", function(e) {
+      
+    if (y1 + 200 < my) {
+        tar.classList.add("move");
+        const  time = setTimeout(reload,2500);
+      }
+    })
+    
+    function reload(){
+      window.location.reload();
+    }
+  </script>
+</body>
+</html>
